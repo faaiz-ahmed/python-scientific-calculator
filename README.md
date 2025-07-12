@@ -147,7 +147,7 @@ A feature-rich desktop calculator application built with Python's Tkinter GUI fr
 - Some scientific functions require specific input formats## 📸 Screenshots
 
 ### 🧮 Standard Calculator Mode
-![Normal Mode](screenshots/Normal mode.PNG)
+![Normal Mode](screenshots/Normal.PNG)
 
 ### 🧪 Scientific Calculator Mode
 ![Scientific Mode](screenshots/Scientific.PNG)
