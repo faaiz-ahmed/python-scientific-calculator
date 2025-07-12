@@ -66,10 +66,15 @@ A feature-rich desktop calculator application built with Python's Tkinter GUI fr
 ## 📁Project Structure
 
 📁calculator/
+
 ├──  main.py              # Main application file
+
 ├── audio.py             # Audio functionality module
+
 ├── imgg/                # Image assets (optional)
+
 │   └── keys.png         # Calculator icon
+
 └── README.md           # Project documentation
 ## 🧠Usage
 
@@ -142,10 +147,10 @@ A feature-rich desktop calculator application built with Python's Tkinter GUI fr
 - Some scientific functions require specific input formats## 📸 Screenshots
 
 ### 🧮 Standard Calculator Mode
-![Standard Mode](screenshots/Normal mode.png)
+![Normal Mode](screenshots/Normal mode.PNG)
 
 ### 🧪 Scientific Calculator Mode
-![Scientific Mode](screenshots/Scientific.png)
+![Scientific Mode](screenshots/Scientific.PNG)
 
 ### Menu
 ![Menu](screenshots/menu.png)
