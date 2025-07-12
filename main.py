@@ -4,7 +4,6 @@ import math
 import threading
 import os
 
-# Optional audio import with fallback
 try:
     from audio import audiof
     ob = audiof()
@@ -27,12 +26,10 @@ def toggleaudiomode():
     audiomode = not audiomode
     if audiomode:
         print("Audio mode enabled")
-        # Direct audio call for mode messages
         if ob:
             ob.speak('Audio mode enabled')
     else:
         print("Audio mode disabled")
-        # Direct audio call for mode messages
         if ob:
             ob.speak('Audio mode disabled')
 
@@ -47,20 +44,17 @@ def clickbtn(event):
     text = b['text']
     print(text)
     
-    # Audio feedback
     if audiomode and ob:
         ob.speak(text)
     
-    # Handle multiplication symbol
     if text == 'x':
         textfield.insert(END, '*')
         return
     
-    # Handle equals
     if text == '=':
         try:
             ex = textfield.get()
-            if not ex.strip():  # Check for empty expression
+            if not ex.strip():
                 return
             answer = eval(ex)
             textfield.delete(0, END)
@@ -83,7 +77,7 @@ def allclear():
 
 def clr():
     ex = textfield.get()
-    if ex:  # Only delete if there's something to delete
+    if ex:
         ex = ex[:-1]
         textfield.delete(0, END)
         textfield.insert(0, ex)
@@ -95,7 +89,6 @@ def calcscientific(event):
     text = btn['text']
     ex = textfield.get()
     
-    # Audio feedback for scientific buttons
     if audiomode and ob:
         ob.speak(text)
     
@@ -163,7 +156,6 @@ def sciclick():
         window.geometry('480x650')
         print('show scientific')
         normalcalc = False
-        # Direct audio call for scientific mode
         if ob:
             ob.speak('Scientific mode enabled')
     else:
@@ -171,7 +163,6 @@ def sciclick():
         window.geometry("450x480")
         print('show normal')
         normalcalc = True
-        # Direct audio call for normal mode
         if ob:
             ob.speak('Scientific mode disabled')
 
@@ -191,13 +182,11 @@ def enterclick(event):
         showerror("Error", "Invalid expression")
         textfield.delete(0, END)
 
-# Window setup
 window = Tk()
 window.title("Calculator")
 window.geometry("450x480")
 window.config(bg='lightgray')
 
-# Image with error handling
 try:
     if os.path.exists('imgg/keys.png'):
         img = PhotoImage(file='imgg/keys.png')
@@ -211,18 +200,15 @@ try:
 except Exception as e:
     print(f"Error loading image: {e}")
 
-# Heading
 heading = Label(window, text='CALCULATOR', font=font, fg='darkblue', bg='lightgray')
 heading.pack(side=TOP)
 
 textfield = Entry(window, font=font, justify=CENTER, bg='white', bd=2)
 textfield.pack(side=TOP, pady=10, fill=X, padx=10)
 
-# Making frame
 frame = Frame(window, bg='lightgray')
 frame.pack(side=TOP, pady=20)
 
-# Normal calculator buttons
 buttons = [
     ('1', 0, 0), ('2', 0, 1), ('3', 0, 2),
     ('4', 1, 0), ('5', 1, 1), ('6', 1, 2),
@@ -275,10 +261,8 @@ allclrbtn = Button(
 )
 allclrbtn.grid(row=4, column=2, columnspan=2)
 
-# Bind Enter key
 textfield.bind('<Return>', enterclick)
 
-# Scientific frame
 sciframe = Frame(window, bg='gray')
 
 sci_buttons = [
@@ -302,7 +286,6 @@ for (text, row, column) in sci_buttons:
     btn.grid(row=row, column=column, padx=2)
     btn.bind('<Button-1>', calcscientific)
 
-# Menu bar
 menubar = Menu(window)
 
 mode = Menu(menubar, tearoff=0)
@@ -313,7 +296,6 @@ if AUDIO_AVAILABLE:
 menubar.add_cascade(label='Mode', menu=mode)
 window.config(menu=menubar)
 
-# Focus on text field for keyboard input
 textfield.focus_set()
 
 window.mainloop()
